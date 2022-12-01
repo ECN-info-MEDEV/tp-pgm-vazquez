@@ -33,4 +33,23 @@ public class Image {
             matrix.add(new ArrayList<Integer> (Collections.nCopies(this.width, 0)));
         }
     }
+
+    /**
+     * Renvoie une image en N&B selon le niveau du seuil
+     * Les valeurs au-dessus sont en blancs, en dessous en noirs
+     * @param value
+     * @return
+     */
+    public Image seuil(int value){
+        Image newImage = new Image(this);
+        for (int i = 0; i<this.width; i++){
+            for (int j = 0; j<this.height; j++){
+                if (this.matrix.get(i).get(j)>value){
+                    newImage.matrix.get(i).set(j,255);
+                }
+            }
+        }
+        return newImage;
+    }
+
 }
