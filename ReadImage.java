@@ -1,15 +1,22 @@
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class ReadImage {
 
         public static void main(String args[]) throws Exception {
-            FileInputStream f = new FileInputStream("C:\\ImagesTestPGM\\brain.pgm");
-            DataInputStream d = new DataInputStream(f);
-            d.readLine();//first line contains P5
-            String line = d.readLine();//second line contains height and width
+            File newFile = new File("ImagesTestPGM/baboon.pgm");
+            FileReader file = new FileReader(newFile);
+            BufferedReader br = new BufferedReader(file);
+            String line;
+            while ( (line = br.readLine()) != null){
+                System.out.println(line);
+            }
+            /*
             Scanner s = new Scanner(line);
             int width = s.nextInt();
             int height = s.nextInt();
@@ -42,6 +49,7 @@ public class ReadImage {
             System.out.println("Width=" + height);
             System.out.println("Required elemnts=" + (height * width));
             System.out.println("Obtained elemnets=" + count);
+            */
 
         }
     }
