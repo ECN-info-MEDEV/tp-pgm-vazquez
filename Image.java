@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
+import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 public class Image {
 
     public ArrayList<ArrayList<Integer>> matrix  ;
@@ -51,5 +60,33 @@ public class Image {
         }
         return newImage;
     }
+
+    /**
+     * Renvoie une image résultat de la différence entre l'image et l'image en argument 
+     * @param im
+     * @return
+     */
+    public Image difference(Image im){
+        Image newImage = new Image(this);
+        int value;
+        for (int i = 0; i<this.width; i++){
+            for (int j = 0; j<this.height; j++){
+                value = this.matrix.get(i).get(j)-im.matrix.get(i).get(j);
+                newImage.matrix.get(i).set(j,value);
+            }
+        }
+        return newImage;
+    }
+
+    /**
+     * Fonction temporaire
+     * Pour avoir une idée générale
+     */
+    public void affiche(){
+        for (int i = 0; i<this.width; i++){
+            System.out.println(this.matrix.get(i));
+        }
+    }
+    
 
 }
