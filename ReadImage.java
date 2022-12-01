@@ -1,12 +1,13 @@
 import java.io.DataInputStream;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Scanner;
 
 public class ReadImage {
 
-        public static void main(String args[]) throws Exception {
-            FileInputStream f = new FileInputStream("C:\\ImagesTestPGM\\brain.pgm");
+        public ReadImage(File image) throws Exception {
+            FileInputStream f = new FileInputStream(image);
             DataInputStream d = new DataInputStream(f);
             d.readLine();//first line contains P5
             String line = d.readLine();//second line contains height and width
